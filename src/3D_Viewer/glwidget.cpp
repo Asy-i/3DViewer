@@ -53,7 +53,7 @@ void glwidget::resizeGL(int w, int h) {
 
 void glwidget::fileOpener(char *fileName) {
     indexes = init();
-    indexes = s21_parser(fileName);
+    indexes = parser(fileName);
     if(!indexes.statusERR) {
         center(&indexes);
         scalСalc(&indexes, 0.7);

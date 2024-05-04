@@ -1,6 +1,6 @@
 #include "3d_viewer.h"
 
-indexes s21_parser(char* filename) {
+indexes parser(char* filename) {
   setlocale(LC_NUMERIC, "C");
   indexes indexes = init();
   FILE* file = fopen(filename, "r");
@@ -26,12 +26,12 @@ indexes s21_parser(char* filename) {
     int i = 0, j = 0, count_vertex = 0;
     while (getline(&str, &len, file) != -1 && !indexes.statusERR) {
       if (strncmp(str, "v ", 2) == 0) {
-        s21_pars_v(str, &indexes, i);
+        pars_v(str, &indexes, i);
         i += 3;
         count_vertex++;
       }
       if (strncmp(str, "f ", 2) == 0) {
-        j = s21_pars_f(str, &indexes, j, count_vertex);
+        j = pars_f(str, &indexes, j, count_vertex);
       }
     }
     indexes.edges = indexes.count_facets + indexes.count_vertexes - 2;
@@ -76,14 +76,14 @@ int count_facets_in_line(char* str) {  // return number of facets in line
   return count;
 }
 
-void s21_pars_v(char* str, indexes* indexes, int i) {  // parser vertexes line
+void pars_v(char* str, indexes* indexes, int i) {  // parser vertexes line
   sscanf(str, "v %f %f %f", &(indexes->arr_vertexes[i]),
          &(indexes->arr_vertexes[i + 1]), &(indexes->arr_vertexes[i + 2]));
   getMinMax(indexes, indexes->arr_vertexes[i], indexes->arr_vertexes[i + 1],
             indexes->arr_vertexes[i + 2]);
 }
 
-int s21_pars_f(char* str, indexes* indexes, int i,
+int pars_f(char* str, indexes* indexes, int i,
                int count_vertex) {  // parser facets line
   int check = 0;
   int in_line = count_facets_in_line(str);

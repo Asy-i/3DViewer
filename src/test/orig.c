@@ -1,7 +1,7 @@
 #include "orig.h"
 
 indexes orig() {
-  indexes orig = s21_parser("object/cube_first.txt");
+  indexes orig = parser("object/cube_first.obj");
   center(&orig);
   scalСalc(&orig, 0.7);
   return orig;

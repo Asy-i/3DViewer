@@ -7,7 +7,7 @@
 #include "orig.h"
 
 START_TEST(parsing1) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   float orig_arr_vertexes[24] = {1.0,  1.0,  -1.0, 1.0, -1.0, -1.0, 1.0,  1.0,
                                  1.0,  1.0,  -1.0, 1.0, -1.0, 1.0,  -1.0, -1.0,
                                  -1.0, -1.0, -1.0, 1.0, 1.0,  -1.0, -1.0, 1.0};
@@ -49,7 +49,7 @@ START_TEST(parsing1) {
 END_TEST
 
 START_TEST(parsing2) {
-  indexes our = s21_parser("none.txt");
+  indexes our = parser("none.obj");
   int error = 1;
   ck_assert_int_eq(error, our.statusERR);
 }
@@ -57,7 +57,7 @@ END_TEST
 
 START_TEST(toCenter) {
   indexes our = init();
-  our = s21_parser("object/cube_first.txt");
+  our = parser("object/cube_first.obj");
   float orig_arr_vertexes[24] = {1.0,  1.0,  -1.0, 1.0, -1.0, -1.0, 1.0,  1.0,
                                  1.0,  1.0,  -1.0, 1.0, -1.0, 1.0,  -1.0, -1.0,
                                  -1.0, -1.0, -1.0, 1.0, 1.0,  -1.0, -1.0, 1.0};
@@ -72,7 +72,7 @@ START_TEST(toCenter) {
 END_TEST
 
 START_TEST(scale1) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   float orig_arr_vertexes[24] = {0.7,  0.7,  -0.7, 0.7, -0.7, -0.7, 0.7,  0.7,
                                  0.7,  0.7,  -0.7, 0.7, -0.7, 0.7,  -0.7, -0.7,
                                  -0.7, -0.7, -0.7, 0.7, 0.7,  -0.7, -0.7, 0.7};
@@ -87,7 +87,7 @@ START_TEST(scale1) {
 END_TEST
 
 START_TEST(scale2) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -103,7 +103,7 @@ START_TEST(scale2) {
 END_TEST
 ///////начиная отсюжа переписать на правильные итоговые координаты вершин
 START_TEST(moveX) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -119,7 +119,7 @@ START_TEST(moveX) {
 END_TEST
 
 START_TEST(moveY) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -135,7 +135,7 @@ START_TEST(moveY) {
 END_TEST
 
 START_TEST(moveZ) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -151,7 +151,7 @@ START_TEST(moveZ) {
 END_TEST
 
 START_TEST(rotate_X) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -167,7 +167,7 @@ START_TEST(rotate_X) {
 END_TEST
 
 START_TEST(rotate_Y) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);
@@ -183,7 +183,7 @@ START_TEST(rotate_Y) {
 END_TEST
 
 START_TEST(rotate_Z) {
-  indexes our = s21_parser("object/cube_first.txt");
+  indexes our = parser("object/cube_first.obj");
   indexes original = orig();
   center(&our);
   scalСalc(&our, 0.7);

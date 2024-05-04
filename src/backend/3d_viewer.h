@@ -26,7 +26,7 @@ typedef struct index {
   int statusERR;
 } indexes;
 
-indexes s21_parser(char* filename);
+indexes parser(char* filename);
 /// @brief Количество строк с вершинами и рёбрами
 /// @param file файл проекта
 /// @param indexes структура с данными
@@ -39,14 +39,14 @@ int count_facets_in_line(char* str);
 /// @param str текущая строка
 /// @param indexes структура с данными
 /// @param i счётчик вершин для записи в массив с вершинами
-void s21_pars_v(char* str, indexes* indexes, int i);
+void pars_v(char* str, indexes* indexes, int i);
 /// @brief парсер для строк с рёбрами
 /// @param str текущая строка
 /// @param indexes структура с данными
 /// @param i счётчик рёбер для записи в массив с рёбрами
 /// @param count_vertex счётчик вершин для обработки отрицательных значений
 /// @return возвращает счётчик рёбер
-int s21_pars_f(char* str, indexes* indexes, int i, int count_vertex);
+int pars_f(char* str, indexes* indexes, int i, int count_vertex);
 /// @brief инициализация структуры
 /// @return возвращает структуру
 indexes init();
